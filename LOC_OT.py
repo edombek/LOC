@@ -3166,10 +3166,10 @@ def WriteSpectraOL(INI, OLBAND, iband):
         if (fwhm>0.0):
             fp[0].data = ConvolveCube(fp[0].data, fwhm, INI['GPU'], INI['platforms'])
             fp[0].header['BEAM'] = fwhm*INI['grid']/3600.0            
-        fp.writeto('OL_%s_%s_%02d-%02d%s.fits'        % (INI['prefix'], MOL.NAME, u0, l0, ['', '.%03d' % iview][NVIEW>1]), overwrite=True)
+        fp.writeto('%s_OL_%s_%02d-%02d%s.fits'        % (INI['prefix'], MOL.NAME, u0, l0, ['', '.%03d' % iview][NVIEW>1]), overwrite=True)
         if (TAUSAVE):
             #  TAU not convolved !
-            fptau.writeto('%s_%s_%02d-%02d_tau%s.fits' % (INI['prefix'], MOL.NAME, u0, l0, ['', '.%03d' % iview][NVIEW>1]), overwrite=True)
+            fptau.writeto('%s_OL_%s_%02d-%02d_tau%s.fits' % (INI['prefix'], MOL.NAME, u0, l0, ['', '.%03d' % iview][NVIEW>1]), overwrite=True)
             del fptau
         print("  SPECTRUM %3d  = %2d -> %2d,  <tau_peak> = %.3e" % (tran0, u0, l0, ave_tau/(NRA*NDE)))
 
